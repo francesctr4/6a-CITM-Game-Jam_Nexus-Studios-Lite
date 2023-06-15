@@ -1,6 +1,6 @@
 # 6a-CITM-Game-Jam_Nexus-Studios-Lite (In Progress)
 
-### Repository Link: 
+### Repository Link: [Nexus Studios Lite](https://github.com/francesctr4/6a-CITM-Game-Jam_Nexus-Studios-Lite)
 
 ## Team Members
 
