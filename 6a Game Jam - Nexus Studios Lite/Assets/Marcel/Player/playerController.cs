@@ -12,11 +12,38 @@ public class playerController : MonoBehaviour
     public float speed;
     public float rotationInterpolation = 0.3f;
 
+    private Animator anim;
+
+    private BatStates currenteState;
+    private enum BatStates
+    {
+        Volar,
+        Andar,
+        Dejar_Andar
+    }
+
+    //public string targetTag = "Player";
+
+    //private GameObject targetObject;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
+
+        //targetObject = GameObject.FindGameObjectWithTag(targetTag);
+        
+        //if (targetObject != null)
+        //{
+        //    // Se encontró un GameObject con el tag especificado
+        //    Debug.Log("GameObject encontrado: " + targetObject.name);
+        //}
+        //else
+        //{
+        //    // No se encontró ningún GameObject con el tag especificado
+        //    Debug.Log("No se encontró ningún GameObject con el tag: " + targetTag);
+        //}
     }
 
     // Update is called once per frame
@@ -34,9 +61,7 @@ public class playerController : MonoBehaviour
             rb.gravityScale = 0;
         }
         else { rb.gravityScale = 5; }
-        
     }
-
     void GetRoitation()
     {
         Vector2 lookDir = new Vector2(-input.x, input.y);
@@ -54,6 +79,24 @@ public class playerController : MonoBehaviour
         else
         {
             rb.rotation = Mathf.Lerp(rb.rotation, shipAngle, rotationInterpolation);
+        }
+    }
+    private void ChangeState(BatStates newState)
+    {
+        if (newState == currenteState) return;
+
+        currenteState = newState;
+        switch (newState)
+        {
+            case BatStates.Volar:
+                anim.SetTrigger(name: "Volar");
+                break;
+            case BatStates.Andar:
+                anim.SetTrigger(name: "Andar");
+                break;
+            case BatStates.Dejar_Andar:
+                anim.SetTrigger(name: "Dejar_Andar");
+                break;
         }
     }
 }
