@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class playerController : MonoBehaviour
 {
+    [SerializeField] private FieldOfView fieldOfView;
 
     private Rigidbody2D rb;
     Vector2 input;
@@ -51,6 +52,22 @@ public class playerController : MonoBehaviour
     {
         input.x = Input.GetAxis("Horizontal");
         input.y = Input.GetAxis("Vertical");
+
+        Vector3 mousePositionScreen = Input.mousePosition;
+
+        // Convertir la posición del mouse a coordenadas del mundo
+        Vector3 mousePositionWorld = Camera.main.ScreenToWorldPoint(mousePositionScreen);
+
+        // Crear un Vector2 con la posición del mouse en el mundo
+        Vector3 dirAim = new Vector3(mousePositionWorld.x, mousePositionWorld.y, mousePositionWorld.z);
+
+        
+
+        fieldOfView.SetAimDirection(dirAim - gameObject.transform.position);
+        fieldOfView.SetOrigin(gameObject.transform.position);
+
+
+
     }
     private void FixedUpdate()
     {
