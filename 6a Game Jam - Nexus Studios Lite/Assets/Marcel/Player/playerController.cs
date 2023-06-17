@@ -10,8 +10,7 @@ public class playerController : MonoBehaviour
     float shipAngle;
 
     public float speed;
-    public float rotationInterpolation = 0.4f;
-    public float  amarillo = 0;
+    public float rotationInterpolation = 0.3f;
 
 
     // Start is called before the first frame update
@@ -35,6 +34,7 @@ public class playerController : MonoBehaviour
             rb.gravityScale = 0;
         }
         else { rb.gravityScale = 5; }
+        
     }
 
     void GetRoitation()
