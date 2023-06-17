@@ -11,7 +11,7 @@ public class playerController : MonoBehaviour
 
     public float speed;
     public float rotationInterpolation = 0.4f;
-
+    public float  amarillo = 0;
 
 
     // Start is called before the first frame update
@@ -26,11 +26,15 @@ public class playerController : MonoBehaviour
         input.x = Input.GetAxis("Horizontal");
         input.y = Input.GetAxis("Vertical");
     }
-
     private void FixedUpdate()
     {
         rb.velocity = input * speed * Time.fixedDeltaTime;
         GetRoitation();
+        if (rb.velocity.x == 0 && rb.velocity.y == 0)
+        {
+            rb.gravityScale = 0;
+        }
+        else { rb.gravityScale = 5; }
     }
 
     void GetRoitation()
