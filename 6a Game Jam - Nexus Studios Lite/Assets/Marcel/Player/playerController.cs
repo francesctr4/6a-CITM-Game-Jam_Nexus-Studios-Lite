@@ -6,22 +6,19 @@ public class playerController : MonoBehaviour
 {
     [SerializeField] private FieldOfView fieldOfView;
 
-    private Rigidbody2D rb;
     Vector2 input;
     float shipAngle;
 
-    public float speed;
     public float rotationInterpolation = 0.3f;
+    
+    private float horizontal;
+    private float speed = 4f;
+    private bool isFacingRight = true;
+    public float jump;
 
-    private Animator anim;
-
-    private BatStates currenteState;
-    private enum BatStates
-    {
-        Volar,
-        Andar,
-        Dejar_Andar
-    }
+    [SerializeField] private Rigidbody2D rb;
+    [SerializeField] private Transform groundCheck;
+    [SerializeField] private LayerMask groundLayer;
 
     //public string targetTag = "Player";
 
@@ -31,27 +28,20 @@ public class playerController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        anim = GetComponent<Animator>();
-
-        //targetObject = GameObject.FindGameObjectWithTag(targetTag);
-        
-        //if (targetObject != null)
-        //{
-        //    // Se encontró un GameObject con el tag especificado
-        //    Debug.Log("GameObject encontrado: " + targetObject.name);
-        //}
-        //else
-        //{
-        //    // No se encontró ningún GameObject con el tag especificado
-        //    Debug.Log("No se encontró ningún GameObject con el tag: " + targetTag);
-        //}
     }
 
     // Update is called once per frame
     void Update()
     {
+        //Arreglar movimiento
         input.x = Input.GetAxis("Horizontal");
         input.y = Input.GetAxis("Vertical");
+       
+        //if (Input.GetButtonDown("Jump"))
+        //{
+        //    rb.AddForce(new Vector2(rb.velocity.x, jump));
+        //}
+        //horizontal = Input.GetAxisRaw("Horizontal");
 
         Vector3 mousePositionScreen = Input.mousePosition;
 
@@ -61,13 +51,10 @@ public class playerController : MonoBehaviour
         // Crear un Vector2 con la posición del mouse en el mundo
         Vector3 dirAim = new Vector3(mousePositionWorld.x, mousePositionWorld.y, mousePositionWorld.z);
 
-        
-
         fieldOfView.SetAimDirection(dirAim - gameObject.transform.position);
         fieldOfView.SetOrigin(gameObject.transform.position);
 
-
-
+        
     }
     private void FixedUpdate()
     {
@@ -78,6 +65,12 @@ public class playerController : MonoBehaviour
             rb.gravityScale = 0;
         }
         else { rb.gravityScale = 5; }
+
+        //rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
+    }
+    private bool IsGrounded()
+    {
+        return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
     }
     void GetRoitation()
     {
@@ -98,22 +91,16 @@ public class playerController : MonoBehaviour
             rb.rotation = Mathf.Lerp(rb.rotation, shipAngle, rotationInterpolation);
         }
     }
-    private void ChangeState(BatStates newState)
+    private void Flip()
     {
-        if (newState == currenteState) return;
-
-        currenteState = newState;
-        switch (newState)
+        if (isFacingRight && horizontal < 0f || !isFacingRight && horizontal > 0f)
         {
-            case BatStates.Volar:
-                anim.SetTrigger(name: "Volar");
-                break;
-            case BatStates.Andar:
-                anim.SetTrigger(name: "Andar");
-                break;
-            case BatStates.Dejar_Andar:
-                anim.SetTrigger(name: "Dejar_Andar");
-                break;
+            isFacingRight = !isFacingRight;
+            Vector3 localScale = transform.localScale;
+            localScale.x *= -1f;
+            transform.localScale = localScale;
         }
     }
+
 }
+
