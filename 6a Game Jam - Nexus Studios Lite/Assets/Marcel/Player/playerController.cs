@@ -16,27 +16,41 @@ public class playerController : MonoBehaviour
     private bool isFacingRight = true;
     public float jump;
 
+    private bool canDash = true;
+    private bool isDashing;
+    public float dashingPower = 24f;
+    public float dashingTime = 0.2f;
+    public float dashingCooldown = 1f;
+
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
+    [SerializeField] private TrailRenderer tr;
 
     //public string targetTag = "Player";
 
     //private GameObject targetObject;
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
+        if (isDashing)
+        {
+            return;
+        }
+
         //Arreglar movimiento
         input.x = Input.GetAxis("Horizontal");
         input.y = Input.GetAxis("Vertical");
-       
+
+
+
         //if (Input.GetButtonDown("Jump"))
         //{
         //    rb.AddForce(new Vector2(rb.velocity.x, jump));
@@ -54,10 +68,17 @@ public class playerController : MonoBehaviour
         fieldOfView.SetAimDirection(dirAim - gameObject.transform.position);
         fieldOfView.SetOrigin(gameObject.transform.position);
 
-        
+        if (Input.GetKeyDown(KeyCode.LeftShift) && canDash)
+        {
+            StartCoroutine(Dash());
+        }
     }
     private void FixedUpdate()
     {
+        if (isDashing)
+        {
+            return;
+        }
         rb.velocity = input * speed * Time.fixedDeltaTime;
         GetRoitation();
         if (rb.velocity.x == 0 && rb.velocity.y == 0)
@@ -100,6 +121,21 @@ public class playerController : MonoBehaviour
             localScale.x *= -1f;
             transform.localScale = localScale;
         }
+    }
+    private IEnumerator Dash()
+    {
+        canDash = false;
+        isDashing = true;
+        float originalGravity = rb.gravityScale;
+        rb.gravityScale = 0f;
+        rb.velocity = new Vector2(transform.localScale.x * dashingPower, 0f);
+        tr.emitting = true;
+        yield return new WaitForSeconds(dashingTime);
+        tr.emitting = false;
+        rb.gravityScale = originalGravity;
+        isDashing = false;
+        yield return new WaitForSeconds(dashingCooldown);
+        canDash = true;
     }
 
 }
