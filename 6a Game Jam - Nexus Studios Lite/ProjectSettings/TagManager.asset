@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Wall
   - Coin
+  - Arriba
+  - Abajo
   layers:
   - Default
   - TransparentFX
@@ -45,4 +47,13 @@ TagManager:
     locked: 0
   - name: Top
     uniqueID: 3266935189
+    locked: 0
+  - name: Background
+    uniqueID: 609907195
+    locked: 0
+  - name: Details
+    uniqueID: 2944754473
+    locked: 0
+  - name: Tilemap
+    uniqueID: 2984337903
     locked: 0
