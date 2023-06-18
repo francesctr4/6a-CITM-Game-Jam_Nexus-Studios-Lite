@@ -6,6 +6,8 @@ public class playerController : MonoBehaviour
 {
     [SerializeField] private FieldOfView fieldOfView;
 
+    const string VolarAnimatorState = "Volar";
+
     Vector2 input;
     float shipAngle;
 
@@ -34,8 +36,6 @@ public class playerController : MonoBehaviour
     {
         Volar,
         Andar,
-        DejarAndar,
-        DejarVolar
     }
 
     // Start is called before the first frame update
@@ -52,8 +52,8 @@ public class playerController : MonoBehaviour
         {
             return;
         }
-        if (Input.GetButtonDown("Jump")&& IsGrounded())
-         {
+        if (Input.GetKeyDown(KeyCode.Space) && IsGrounded())
+        {
             rb.AddForce(new Vector2(rb.velocity.x, jump));
         }
         horizontal = Input.GetAxisRaw("Horizontal");
@@ -61,10 +61,10 @@ public class playerController : MonoBehaviour
 
         Vector3 mousePositionScreen = Input.mousePosition;
 
-        // Convertir la posición del mouse a coordenadas del mundo
+        // Convertir la posiciï¿½n del mouse a coordenadas del mundo
         Vector3 mousePositionWorld = Camera.main.ScreenToWorldPoint(mousePositionScreen);
 
-        // Crear un Vector2 con la posición del mouse en el mundo
+        // Crear un Vector2 con la posiciï¿½n del mouse en el mundo
         mouseposition2D = new Vector2(mousePositionWorld.x, mousePositionWorld.y);
         Vector3 dirAim = new Vector3(mousePositionWorld.x, mousePositionWorld.y, mousePositionWorld.z);
 
@@ -84,16 +84,14 @@ public class playerController : MonoBehaviour
         Flip();
         rb.constraints = RigidbodyConstraints2D.FreezeRotation;
 
-        if (IsGrounded())
+        if(IsGrounded())
         {
-            ChangeState(Batstates.DejarVolar);
-            ChangeState(Batstates.Andar);
+           ChangeState(Batstates.Andar);
+           Debug.Log("AAAAAAAAAAA");
         }
-        if (!IsGrounded())
+        if(!IsGrounded())
         {
-            
-            ChangeState(Batstates.DejarAndar);
-            ChangeState(Batstates.Volar);
+           ChangeState(Batstates.Volar);
         }
     }
        
@@ -146,25 +144,25 @@ public class playerController : MonoBehaviour
         yield return new WaitForSeconds(dashingCooldown);
         canDash = true;
     }
+
     private void ChangeState(Batstates newState)
     {
-        if (newState == currentState) return;
+        if (newState == currentState)
+        {
+            return;
+        }
+
         currentState = newState;
+
         switch (newState)
         {
-            case Batstates.Volar:
-                animator.SetTrigger(name: "Volar");
-                break;
             case Batstates.Andar:
-                animator.SetTrigger(name: "Andar");
+                animator.SetBool(VolarAnimatorState, false);
                 break;
-            case Batstates.DejarAndar:
-                animator.SetTrigger(name: "DejarAndar");
+            case Batstates.Volar:
+                animator.SetBool(VolarAnimatorState, true);
                 break;
-            case Batstates.DejarVolar:
-                animator.SetTrigger(name: "DejarVolar");
-                break;
-
+            
         }        
     }
 }
