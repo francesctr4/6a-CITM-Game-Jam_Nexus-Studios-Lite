@@ -26,12 +26,23 @@ public class playerController : MonoBehaviour
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
+    [SerializeField] private Animator animator;
     [SerializeField] private TrailRenderer tr;
+
+    Batstates currentState;
+    private enum Batstates
+    {
+        Volar,
+        Andar,
+        DejarAndar,
+        DejarVolar
+    }
 
     // Start is called before the first frame update
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -71,6 +82,19 @@ public class playerController : MonoBehaviour
         }
         else { rb.constraints = RigidbodyConstraints2D.None; }
         Flip();
+        rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+
+        if (IsGrounded())
+        {
+            ChangeState(Batstates.DejarVolar);
+            ChangeState(Batstates.Andar);
+        }
+        if (!IsGrounded())
+        {
+            
+            ChangeState(Batstates.DejarAndar);
+            ChangeState(Batstates.Volar);
+        }
     }
        
     
@@ -122,6 +146,26 @@ public class playerController : MonoBehaviour
         yield return new WaitForSeconds(dashingCooldown);
         canDash = true;
     }
+    private void ChangeState(Batstates newState)
+    {
+        if (newState == currentState) return;
+        currentState = newState;
+        switch (newState)
+        {
+            case Batstates.Volar:
+                animator.SetTrigger(name: "Volar");
+                break;
+            case Batstates.Andar:
+                animator.SetTrigger(name: "Andar");
+                break;
+            case Batstates.DejarAndar:
+                animator.SetTrigger(name: "DejarAndar");
+                break;
+            case Batstates.DejarVolar:
+                animator.SetTrigger(name: "DejarVolar");
+                break;
 
+        }        
+    }
 }
 
