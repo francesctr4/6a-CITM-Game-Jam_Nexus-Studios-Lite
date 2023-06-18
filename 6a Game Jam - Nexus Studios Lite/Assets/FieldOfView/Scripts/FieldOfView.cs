@@ -1,19 +1,19 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using CodeMonkey.Utils;
 
 public class FieldOfView : MonoBehaviour {
 
     private bool isMousePressed = false;
-    [SerializeField] private LayerMask layerMask;
+    [SerializeField] private List<LayerMask> layerMasks;
     private Mesh mesh;
     public float fov;
     public float viewDistance;
     private Vector3 origin;
     private float startingAngle;
 
-    private void Start() {
+    private void Start() 
+    {
         mesh = new Mesh();
         GetComponent<MeshFilter>().mesh = mesh;
         //fov = 45;
@@ -21,7 +21,8 @@ public class FieldOfView : MonoBehaviour {
         origin = Vector3.zero;
     }
 
-    private void LateUpdate() {
+    private void LateUpdate() 
+    {
         if (Input.GetMouseButtonDown(0))
         {
             isMousePressed = true;
@@ -33,7 +34,6 @@ public class FieldOfView : MonoBehaviour {
 
         if (isMousePressed)
         {
-
             int rayCount = 50;
             float angle = startingAngle;
             float angleIncrease = fov / rayCount;
@@ -48,9 +48,35 @@ public class FieldOfView : MonoBehaviour {
             int triangleIndex = 0;
             for (int i = 0; i <= rayCount; i++)
             {
+                bool hasPoint = false;
+                Vector2 closestPoint = new Vector2(float.MaxValue, float.MaxValue);
+
+                foreach (LayerMask layer in layerMasks)
+                {
+                    RaycastHit2D raycastHit2D = Physics2D.Raycast(origin, UtilsClass.GetVectorFromAngle(angle), viewDistance, layer);
+
+                    if(raycastHit2D.collider != null)
+                    {
+                        if(!hasPoint)
+                        {
+                            closestPoint = raycastHit2D.point;
+                            hasPoint = true;
+                            continue;
+                        }
+
+                        float closestDistance = Vector2.Distance(closestPoint, origin) + 400;
+                        float currentDistance = Vector2.Distance(raycastHit2D.point, origin);
+
+                        if(currentDistance < closestDistance)
+                        {
+                            closestPoint = raycastHit2D.point;
+                        }
+                    }
+                }
+
                 Vector3 vertex;
-                RaycastHit2D raycastHit2D = Physics2D.Raycast(origin, UtilsClass.GetVectorFromAngle(angle), viewDistance, layerMask);
-                if (raycastHit2D.collider == null)
+
+                if (!hasPoint)
                 {
                     // No hit
                     vertex = origin + UtilsClass.GetVectorFromAngle(angle) * viewDistance;
@@ -58,7 +84,7 @@ public class FieldOfView : MonoBehaviour {
                 else
                 {
                     // Hit object
-                    vertex = raycastHit2D.point;
+                    vertex = closestPoint;
                 }
                 vertices[vertexIndex] = vertex;
 
