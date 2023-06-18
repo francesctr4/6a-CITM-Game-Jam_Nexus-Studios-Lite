@@ -103,7 +103,7 @@ Material:
     m_Ints: []
     m_Floats:
     - PixelSnap: 0
-    - Vector1_D2837B7B: 0
+    - Vector1_D2837B7B: 1
     - _BumpScale: 1
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
