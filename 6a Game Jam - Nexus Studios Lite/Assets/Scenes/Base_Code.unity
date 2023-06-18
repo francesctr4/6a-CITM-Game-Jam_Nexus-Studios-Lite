@@ -545,14 +545,14 @@ MonoBehaviour:
   fieldOfView: {fileID: 1947740950}
   rotationInterpolation: 0.3
   jump: 600
-  dashingPower: 20
-  dashingTime: 0.2
+  dashingPower: 10
+  dashingTime: 0.15
   dashingCooldown: 0.5
   rb: {fileID: 716500063}
-  groundCheck: {fileID: 1260312212}
+  groundCheck: {fileID: 770210772}
   groundLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   tr: {fileID: 716500067}
 --- !u!50 &716500063
 Rigidbody2D:
@@ -664,7 +664,8 @@ Transform:
   m_LocalPosition: {x: 2.78, y: -2.21, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 770210772}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -779,6 +780,37 @@ TrailRenderer:
   m_Autodestruct: 0
   m_Emitting: 0
   m_ApplyActiveColorSpace: 1
+--- !u!1 &770210771
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 770210772}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &770210772
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 770210771}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.37, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 716500066}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1260312208
 GameObject:
   m_ObjectHideFlags: 0
