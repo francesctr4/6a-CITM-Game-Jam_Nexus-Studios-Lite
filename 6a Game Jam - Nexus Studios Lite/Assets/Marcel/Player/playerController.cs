@@ -21,6 +21,7 @@ public class playerController : MonoBehaviour
     public float dashingPower = 24f;
     public float dashingTime = 0.2f;
     public float dashingCooldown = 1f;
+    private Vector2 mouseposition2D;
 
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform groundCheck;
@@ -63,6 +64,7 @@ public class playerController : MonoBehaviour
         Vector3 mousePositionWorld = Camera.main.ScreenToWorldPoint(mousePositionScreen);
 
         // Crear un Vector2 con la posición del mouse en el mundo
+        mouseposition2D = new Vector2(mousePositionWorld.x, mousePositionWorld.y);
         Vector3 dirAim = new Vector3(mousePositionWorld.x, mousePositionWorld.y, mousePositionWorld.z);
 
         fieldOfView.SetAimDirection(dirAim - gameObject.transform.position);
@@ -128,7 +130,7 @@ public class playerController : MonoBehaviour
         isDashing = true;
         float originalGravity = rb.gravityScale;
         rb.gravityScale = 0f;
-        rb.velocity = new Vector2(transform.localScale.x * dashingPower, 0f);
+        rb.velocity = (mouseposition2D - new Vector2(gameObject.transform.position.x, gameObject.transform.position.y)).normalized * dashingPower;
         tr.emitting = true;
         yield return new WaitForSeconds(dashingTime);
         tr.emitting = false;
