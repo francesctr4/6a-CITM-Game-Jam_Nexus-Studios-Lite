@@ -10,8 +10,8 @@ public class playerController : MonoBehaviour
     float shipAngle;
 
     public float rotationInterpolation = 0.3f;
-    
     private float horizontal;
+    private float vertical;
     private float speed = 4f;
     private bool isFacingRight = true;
     public float jump;
@@ -28,10 +28,6 @@ public class playerController : MonoBehaviour
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private TrailRenderer tr;
 
-    //public string targetTag = "Player";
-
-    //private GameObject targetObject;
-
     // Start is called before the first frame update
     private void Start()
     {
@@ -45,18 +41,12 @@ public class playerController : MonoBehaviour
         {
             return;
         }
-
-        //Arreglar movimiento
-        input.x = Input.GetAxis("Horizontal");
-        input.y = Input.GetAxis("Vertical");
-
-
-
-        //if (Input.GetButtonDown("Jump"))
-        //{
-        //    rb.AddForce(new Vector2(rb.velocity.x, jump));
-        //}
-        //horizontal = Input.GetAxisRaw("Horizontal");
+        if (Input.GetButtonDown("Jump")&& IsGrounded())
+         {
+            rb.AddForce(new Vector2(rb.velocity.x, jump));
+        }
+        horizontal = Input.GetAxisRaw("Horizontal");
+        vertical = Input.GetAxisRaw("Vertical");
 
         Vector3 mousePositionScreen = Input.mousePosition;
 
@@ -74,46 +64,39 @@ public class playerController : MonoBehaviour
         {
             StartCoroutine(Dash());
         }
+
+        if (horizontal == 0 && vertical == 0)
+        {
+            rb.constraints = RigidbodyConstraints2D.FreezePositionY;
+        }
+        else { rb.constraints = RigidbodyConstraints2D.None; }
+        Flip();
     }
+       
+    
     private void FixedUpdate()
     {
         if (isDashing)
         {
             return;
         }
-        rb.velocity = input * speed * Time.fixedDeltaTime;
-        GetRoitation();
+
         if (rb.velocity.x == 0 && rb.velocity.y == 0)
         {
             rb.gravityScale = 0;
         }
         else { rb.gravityScale = 5; }
 
-        //rb.velocity = new Vector2(horizontal * speed, rb.velocity.y);
+        rb.velocity = new Vector2(horizontal * speed, vertical * speed);
+        
     }
+
     private bool IsGrounded()
     {
         return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
     }
-    void GetRoitation()
-    {
-        Vector2 lookDir = new Vector2(-input.x, input.y);
-        shipAngle = Mathf.Atan2(lookDir.x, lookDir.y) * Mathf.Rad2Deg;
-        if(rb.rotation<= -90 && shipAngle >=90)
-        {
-            rb.rotation += 360;
-            rb.rotation = Mathf.Lerp(rb.rotation, shipAngle, rotationInterpolation);
-        }
-        else if(rb.rotation >= 90 && shipAngle <= -90)
-        {
-            rb.rotation -= 360;
-            rb.rotation = Mathf.Lerp(rb.rotation, shipAngle, rotationInterpolation);
-        }
-        else
-        {
-            rb.rotation = Mathf.Lerp(rb.rotation, shipAngle, rotationInterpolation);
-        }
-    }
+
+
     private void Flip()
     {
         if (isFacingRight && horizontal < 0f || !isFacingRight && horizontal > 0f)
