@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class playerController : MonoBehaviour
 {
+    private Item itemScript;
+
     [SerializeField] private FieldOfView fieldOfView;
 
     const string VolarAnimatorState = "Volar";
@@ -46,6 +48,7 @@ public class playerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        itemScript = GetComponent<Item>();
     }
 
     // Update is called once per frame
@@ -74,7 +77,7 @@ public class playerController : MonoBehaviour
         fieldOfView.SetAimDirection(dirAim - gameObject.transform.position);
         fieldOfView.SetOrigin(gameObject.transform.position);
 
-        if (Input.GetKeyDown(KeyCode.LeftShift) && canDash)
+        if (Input.GetKeyDown(KeyCode.LeftShift) && canDash && itemScript.unlockedDash)
         {
             StartCoroutine(Dash());
         }
