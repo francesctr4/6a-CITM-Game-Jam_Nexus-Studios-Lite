@@ -726,9 +726,10 @@ GameObject:
   - component: {fileID: 716500064}
   - component: {fileID: 716500063}
   - component: {fileID: 716500062}
+  - component: {fileID: 716500070}
   - component: {fileID: 716500067}
-  - component: {fileID: 716500068}
   - component: {fileID: 716500069}
+  - component: {fileID: 716500071}
   m_Layer: 0
   m_Name: Principal
   m_TagString: Player
@@ -760,7 +761,7 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
-  animator: {fileID: 716500068}
+  animator: {fileID: 716500071}
   tr: {fileID: 716500067}
   spriteRenderer: {fileID: 716500065}
 --- !u!50 &716500063
@@ -991,7 +992,35 @@ TrailRenderer:
   m_Autodestruct: 0
   m_Emitting: 0
   m_ApplyActiveColorSpace: 1
---- !u!95 &716500068
+--- !u!114 &716500069
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 716500061}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 825402747c1f87c439cf0ce3a7d98cda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unlockedDash: 0
+--- !u!114 &716500070
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 716500061}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0409d6647cec3d49ab5c052ba8da83e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stamina: 0
+  maxStamina: 0
+  dValue: 0
+--- !u!95 &716500071
 Animator:
   serializedVersion: 4
   m_ObjectHideFlags: 0
@@ -1011,19 +1040,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &716500069
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 716500061}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 825402747c1f87c439cf0ce3a7d98cda, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  unlockedDash: 0
 --- !u!1 &757924590
 GameObject:
   m_ObjectHideFlags: 0
