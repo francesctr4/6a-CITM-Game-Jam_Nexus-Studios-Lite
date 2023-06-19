@@ -255,7 +255,8 @@ GameObject:
   - component: {fileID: 466352646}
   - component: {fileID: 466352649}
   - component: {fileID: 466352648}
-  m_Layer: 6
+  - component: {fileID: 466352650}
+  m_Layer: 7
   m_Name: Square
   m_TagString: Arriba
   m_Icon: {fileID: 0}
@@ -376,6 +377,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &466352650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 466352644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3a72d1dcf368c14d8f7cc0783fcdf2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &471420700
 GameObject:
   m_ObjectHideFlags: 0
@@ -598,6 +611,11 @@ MonoBehaviour:
   dashingTime: 0.15
   dashingCooldown: 0.5
   rb: {fileID: 716500063}
+  groundCheckDown: {fileID: 757924591}
+  groundCheckUp: {fileID: 471420701}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
   animator: {fileID: 716500068}
   tr: {fileID: 716500067}
   spriteRenderer: {fileID: 716500065}
@@ -873,7 +891,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 757924590}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.025, y: -0.202, z: 0}
+  m_LocalPosition: {x: 0.025, y: -0.455, z: 0}
   m_LocalScale: {x: 0.20152342, y: 0.5434375, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -944,7 +962,7 @@ GameObject:
   - component: {fileID: 775174374}
   - component: {fileID: 775174373}
   - component: {fileID: 775174372}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Square (2)
   m_TagString: Arriba
   m_Icon: {fileID: 0}
@@ -1058,43 +1076,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 775174371}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.93, y: -0.55, z: 0}
+  m_LocalPosition: {x: -2.26, y: 0.12, z: 0}
   m_LocalScale: {x: 2.9854896, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &998678795
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 998678796}
-  m_Layer: 0
-  m_Name: Volar
-  m_TagString: Arriba
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &998678796
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 998678795}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.430958, y: -4.865442, z: -0.143978}
-  m_LocalScale: {x: 416.30624, y: 416.30624, z: 416.30624}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1260312208
 GameObject:
@@ -1108,7 +1095,8 @@ GameObject:
   - component: {fileID: 1260312211}
   - component: {fileID: 1260312210}
   - component: {fileID: 1260312209}
-  m_Layer: 6
+  - component: {fileID: 1260312213}
+  m_Layer: 7
   m_Name: Square (1)
   m_TagString: Abajo
   m_Icon: {fileID: 0}
@@ -1229,6 +1217,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1260312213
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1260312208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3a72d1dcf368c14d8f7cc0783fcdf2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1444662659
 GameObject:
   m_ObjectHideFlags: 0
@@ -1308,7 +1308,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1444662659}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.25, y: -0.02, z: -10}
+  m_LocalPosition: {x: 0, y: -0.02, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
