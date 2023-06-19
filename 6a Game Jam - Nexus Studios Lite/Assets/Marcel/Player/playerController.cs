@@ -135,7 +135,22 @@ public class playerController : MonoBehaviour
         isDashing = true;
         float originalGravity = rb.gravityScale;
         rb.gravityScale = 0f;
-        rb.velocity = (mouseposition2D - new Vector2(gameObject.transform.position.x, gameObject.transform.position.y)).normalized * dashingPower;
+        if(horizontal == 0 && vertical == 0)
+        {
+            if(isFacingRight)
+            {
+                rb.velocity = new Vector2(1, 0).normalized * dashingPower;
+            }
+            else
+            {
+                rb.velocity = new Vector2(-1, 0).normalized * dashingPower;
+            }
+           
+        }
+        else
+        {
+            rb.velocity = new Vector2(horizontal, vertical).normalized * dashingPower;
+        }
         tr.emitting = true;
         yield return new WaitForSeconds(dashingTime);
         tr.emitting = false;

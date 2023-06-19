@@ -497,7 +497,7 @@ MonoBehaviour:
   fieldOfView: {fileID: 1947740950}
   rotationInterpolation: 0.3
   jump: 600
-  dashingPower: 10
+  dashingPower: 15
   dashingTime: 0.15
   dashingCooldown: 0.5
   rb: {fileID: 716500063}
