@@ -11,12 +11,12 @@ public class playerController : MonoBehaviour
     Vector2 input;
     float shipAngle;
 
-    public float rotationInterpolation = 0.3f;
     private float horizontal;
     private float vertical;
     private float speed = 4f;
     private bool isFacingRight = true;
     public float jump;
+    private bool derecha = false;
 
     private bool canDash = true;
     private bool isDashing;
@@ -135,6 +135,16 @@ public class playerController : MonoBehaviour
         }
 
         rb.velocity = new Vector2(horizontal * speed, vertical * speed);
+
+        if (Input.GetKeyDown("q"))
+        {
+
+            if (derecha == false)
+            {
+                gameObject.transform.Rotate(0, 0, 90);
+                derecha = true;
+            }        
+        }
         
     }
 
@@ -161,6 +171,7 @@ public class playerController : MonoBehaviour
                 return true;
             }
         }
+        
 
         return false;
     }
