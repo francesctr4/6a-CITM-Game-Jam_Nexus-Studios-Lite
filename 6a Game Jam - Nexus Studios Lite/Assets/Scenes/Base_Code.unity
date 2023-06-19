@@ -243,6 +243,65 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1001 &446039329
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 2
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4154865066116133808, guid: 840b5b07433aa1d468344b0ba35cce70, type: 3}
+      propertyPath: m_RootOrder
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 4154865066116133808, guid: 840b5b07433aa1d468344b0ba35cce70, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.5085729
+      objectReference: {fileID: 0}
+    - target: {fileID: 4154865066116133808, guid: 840b5b07433aa1d468344b0ba35cce70, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -4.01248
+      objectReference: {fileID: 0}
+    - target: {fileID: 4154865066116133808, guid: 840b5b07433aa1d468344b0ba35cce70, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4154865066116133808, guid: 840b5b07433aa1d468344b0ba35cce70, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4154865066116133808, guid: 840b5b07433aa1d468344b0ba35cce70, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4154865066116133808, guid: 840b5b07433aa1d468344b0ba35cce70, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4154865066116133808, guid: 840b5b07433aa1d468344b0ba35cce70, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4154865066116133808, guid: 840b5b07433aa1d468344b0ba35cce70, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4154865066116133808, guid: 840b5b07433aa1d468344b0ba35cce70, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4154865066116133808, guid: 840b5b07433aa1d468344b0ba35cce70, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4154865066116133815, guid: 840b5b07433aa1d468344b0ba35cce70, type: 3}
+      propertyPath: m_Name
+      value: Item Dash
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_AddedGameObjects: []
+  m_SourcePrefab: {fileID: 100100000, guid: 840b5b07433aa1d468344b0ba35cce70, type: 3}
 --- !u!1 &466352644
 GameObject:
   m_ObjectHideFlags: 0
@@ -1195,7 +1254,7 @@ GameObject:
   - component: {fileID: 1260312210}
   - component: {fileID: 1260312209}
   - component: {fileID: 1260312213}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: Square (1)
   m_TagString: Abajo
   m_Icon: {fileID: 0}

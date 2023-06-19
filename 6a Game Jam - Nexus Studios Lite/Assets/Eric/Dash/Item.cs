@@ -10,9 +10,10 @@ public class Item : MonoBehaviour
     {
         if(other.CompareTag("Item"))
         {
+            unlockedDash = true;
             other.GetComponent<SpriteRenderer>().enabled = false;
             other.gameObject.active = false;
-            Debug.Log("Item");
+            Debug.Log("Item - Collar");
         }
     }
 }
