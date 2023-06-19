@@ -51,6 +51,9 @@ TagManager:
   - name: Details
     uniqueID: 2944754473
     locked: 0
+  - name: Details 2
+    uniqueID: 1382083467
+    locked: 0
   - name: Tilemap
     uniqueID: 2984337903
     locked: 0
