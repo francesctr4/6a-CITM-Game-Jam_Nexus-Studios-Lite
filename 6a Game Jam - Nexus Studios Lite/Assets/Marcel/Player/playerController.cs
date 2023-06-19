@@ -28,6 +28,7 @@ public class playerController : MonoBehaviour
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform groundCheckDown;
     [SerializeField] private Transform groundCheckUp;
+    [SerializeField] private Transform groundCheckRight;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private Animator animator;
     [SerializeField] private TrailRenderer tr;
@@ -110,11 +111,27 @@ public class playerController : MonoBehaviour
         }
         else if (!IsGroundedUp())
         {
-
-
             spriteRenderer.flipY = false;
+          
+        }
+
+        if (derecha == false)
+        {
+            if (IsGroundedRight())
+            {
+                Vector3 rotation = new Vector3(0, 0, 90);
+                transform.Rotate(rotation);
+                derecha = true;
+            }
 
         }
+        if (derecha == true && isFlying)
+        {
+            Vector3 rotation = new Vector3(0, 0, -90);
+            transform.Rotate(rotation);
+            derecha = false;
+        }
+
     }
        
     
@@ -134,17 +151,10 @@ public class playerController : MonoBehaviour
             rb.gravityScale = 5;
         }
 
+        
         rb.velocity = new Vector2(horizontal * speed, vertical * speed);
 
-        if (Input.GetKeyDown("q"))
-        {
-
-            if (derecha == false)
-            {
-                gameObject.transform.Rotate(0, 0, 90);
-                derecha = true;
-            }        
-        }
+      
         
     }
 
@@ -156,6 +166,11 @@ public class playerController : MonoBehaviour
     private bool IsGroundedUp()
     {
         return IsTouchingWall(groundCheckUp.position);
+    }
+
+    private bool IsGroundedRight()
+    {
+        return IsTouchingWall(groundCheckRight.position);
     }
 
     private bool IsTouchingWall(Vector3 checkPosition)
