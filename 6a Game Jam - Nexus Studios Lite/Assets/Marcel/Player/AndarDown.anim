@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: DejarVolar
+  m_Name: AndarDown
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
@@ -20,13 +20,11 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: -814069797, guid: 8b4c009ee95a6a5488ec3cebb9f2602b, type: 3}
+      value: {fileID: -152083662, guid: be37fda7df12f064e856289f18b9ae01, type: 3}
     - time: 0.16666667
-      value: {fileID: -1011247501, guid: 8b4c009ee95a6a5488ec3cebb9f2602b, type: 3}
-    - time: 0.35
-      value: {fileID: 421014415, guid: 8b4c009ee95a6a5488ec3cebb9f2602b, type: 3}
-    - time: 0.55
-      value: {fileID: 421014415, guid: 8b4c009ee95a6a5488ec3cebb9f2602b, type: 3}
+      value: {fileID: -1412902742, guid: be37fda7df12f064e856289f18b9ae01, type: 3}
+    - time: 0.33333334
+      value: {fileID: 1397387794, guid: be37fda7df12f064e856289f18b9ae01, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -47,16 +45,15 @@ AnimationClip:
       isPPtrCurve: 1
       isIntCurve: 0
     pptrCurveMapping:
-    - {fileID: -814069797, guid: 8b4c009ee95a6a5488ec3cebb9f2602b, type: 3}
-    - {fileID: -1011247501, guid: 8b4c009ee95a6a5488ec3cebb9f2602b, type: 3}
-    - {fileID: 421014415, guid: 8b4c009ee95a6a5488ec3cebb9f2602b, type: 3}
-    - {fileID: 421014415, guid: 8b4c009ee95a6a5488ec3cebb9f2602b, type: 3}
+    - {fileID: -152083662, guid: be37fda7df12f064e856289f18b9ae01, type: 3}
+    - {fileID: -1412902742, guid: be37fda7df12f064e856289f18b9ae01, type: 3}
+    - {fileID: 1397387794, guid: be37fda7df12f064e856289f18b9ae01, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.56666666
+    m_StopTime: 0.35000002
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0

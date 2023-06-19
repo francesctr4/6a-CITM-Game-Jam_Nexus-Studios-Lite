@@ -7,6 +7,7 @@ public class playerController : MonoBehaviour
     [SerializeField] private FieldOfView fieldOfView;
 
     const string VolarAnimatorState = "Volar";
+    const string UpAnimatorState = "Down";
 
     Vector2 input;
     float shipAngle;
@@ -26,16 +27,22 @@ public class playerController : MonoBehaviour
     private Vector2 mouseposition2D;
 
     [SerializeField] private Rigidbody2D rb;
-    [SerializeField] private Transform groundCheck;
+    [SerializeField] private Transform groundCheckDown;
+    [SerializeField] private Transform groundCheckUp;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private Animator animator;
     [SerializeField] private TrailRenderer tr;
+    [SerializeField] private SpriteRenderer spriteRenderer;
 
     Batstates currentState;
     private enum Batstates
     {
         Volar,
+        Volar_False,
         Andar,
+        Andar_False,
+        Up,
+        Up_False,
     }
 
     // Start is called before the first frame update
@@ -52,7 +59,7 @@ public class playerController : MonoBehaviour
         {
             return;
         }
-        if (Input.GetKeyDown(KeyCode.Space) && IsGrounded())
+        if (Input.GetKeyDown(KeyCode.Space) && IsGroundedDown())
         {
             rb.AddForce(new Vector2(rb.velocity.x, jump));
         }
@@ -84,15 +91,18 @@ public class playerController : MonoBehaviour
         Flip();
         rb.constraints = RigidbodyConstraints2D.FreezeRotation;
 
-        if(IsGrounded())
+        if(IsGroundedDown())
         {
-           ChangeState(Batstates.Andar);
-           Debug.Log("AAAAAAAAAAA");
+            ChangeState(Batstates.Up);
+            ChangeState(Batstates.Andar);
         }
-        if(!IsGrounded())
+        if(!IsGroundedDown())
         {
-           ChangeState(Batstates.Volar);
+            ChangeState(Batstates.Up_False);
+            ChangeState(Batstates.Volar);
         }
+
+        spriteRenderer.flipY = IsGroundedUp();
     }
        
     
@@ -113,11 +123,14 @@ public class playerController : MonoBehaviour
         
     }
 
-    private bool IsGrounded()
+    private bool IsGroundedDown()
     {
-        return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
+        return Physics2D.OverlapCircle(groundCheckDown.position, 0.3f, groundLayer);
     }
-
+    private bool IsGroundedUp()
+    {
+        return Physics2D.OverlapCircle(groundCheckUp.position, 0.3f, groundLayer);
+    }
     private void Flip()
     {
         if (isFacingRight && horizontal < 0f || !isFacingRight && horizontal > 0f)
@@ -177,7 +190,13 @@ public class playerController : MonoBehaviour
             case Batstates.Volar:
                 animator.SetBool(VolarAnimatorState, true);
                 break;
-            
+            case Batstates.Up:
+                animator.SetBool(UpAnimatorState, true);
+                break;
+            case Batstates.Up_False:
+                animator.SetBool(UpAnimatorState, false);
+                break;
+
         }        
     }
 }
