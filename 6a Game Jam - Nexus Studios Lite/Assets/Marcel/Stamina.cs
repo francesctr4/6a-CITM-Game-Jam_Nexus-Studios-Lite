@@ -40,7 +40,7 @@ public class Stamina : MonoBehaviour
 
         if (Input.GetKey("w") || Input.GetKey("a") || Input.GetKey("s") || Input.GetKey("d"))
         {
-            stamina -= 10;
+            stamina -= 8;
         }
 
         if (stamina <= 1420)
