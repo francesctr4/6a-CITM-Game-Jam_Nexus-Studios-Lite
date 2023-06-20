@@ -2,8 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class playerController : MonoBehaviour
 {
+    private Stamina staminabar;
     private Item itemScript;
 
     [SerializeField] private FieldOfView fieldOfView;
@@ -21,13 +23,14 @@ public class playerController : MonoBehaviour
     private bool derecha = false;
 
     private bool canDash = true;
-    private bool isDashing;
+    public bool isDashing;
     public float dashingPower = 24f;
     public float dashingTime = 0.2f;
     public float dashingCooldown = 1f;
     private Vector2 mouseposition2D;
 
-    [SerializeField] private Rigidbody2D rb;
+    public Rigidbody2D rb;
+
     [SerializeField] private Transform groundCheckDown;
     [SerializeField] private Transform groundCheckUp;
     [SerializeField] private Transform groundCheckRight;
@@ -134,44 +137,32 @@ public class playerController : MonoBehaviour
             transform.Rotate(rotation);
             derecha = false;
         }
+        
 
     }
        
-    
     private void FixedUpdate()
     {
         if (isDashing)
         {
             return;
         }
-
-        if (rb.velocity.x == 0 && rb.velocity.y == 0)
-        {
-            rb.gravityScale = 0;
-        }
-        else if (!IsGroundedUp()) 
-        {
-            rb.gravityScale = 5;
-        }
-
         
         rb.velocity = new Vector2(horizontal * speed, vertical * speed);
-
-      
-        
+ 
     }
 
-    private bool IsGroundedDown()
+    public bool IsGroundedDown()
     { 
         return IsTouchingWall(groundCheckDown.position);
     }
 
-    private bool IsGroundedUp()
+    public bool IsGroundedUp()
     {
         return IsTouchingWall(groundCheckUp.position);
     }
 
-    private bool IsGroundedRight()
+    public bool IsGroundedRight()
     {
         return IsTouchingWall(groundCheckRight.position);
     }
@@ -205,7 +196,7 @@ public class playerController : MonoBehaviour
         }
     }
 
-    private IEnumerator Dash()
+    public IEnumerator Dash()
     {
         canDash = false;
         isDashing = true;
