@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class HeartSystem : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class HeartSystem : MonoBehaviour
         if(life < 1)
         {
             Destroy(hearts[0].gameObject);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
         else if(life < 2)
         {

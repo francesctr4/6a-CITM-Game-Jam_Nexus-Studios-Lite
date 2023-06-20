@@ -14,4 +14,10 @@ public class PlayGame : MonoBehaviour
     {
         Application.Quit();
     }
+
+    public void GoTitle()
+    {
+        SceneManager.LoadScene(0);
+    }
+
 }
