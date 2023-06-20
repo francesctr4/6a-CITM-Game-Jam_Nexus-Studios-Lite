@@ -9,7 +9,7 @@ public class Stamina : MonoBehaviour
     [SerializeField] GameObject player;
 
     // Start is called before the first frame update
-    [Range(0,4000)]
+    [Range(0, 4000)]
     public float stamina;
     float maxStamina = 2000;
 
@@ -33,27 +33,27 @@ public class Stamina : MonoBehaviour
     private void Update()
     {
         if (stamina > maxStamina) stamina = maxStamina;
-        else if (stamina < 0) stamina = 0;
-        
+
         currentStaminaPercent = stamina * staminaPercentUnit;
 
         uiBar.anchorMax = new Vector2((currentStaminaPercent * percentUnit) / 400f, uiBar.anchorMax.y);
-        
+
         if (Input.GetKey("w") || Input.GetKey("a") || Input.GetKey("s") || Input.GetKey("d"))
         {
-           stamina -= 15;
+            stamina -= 15;
         }
 
-        if(stamina <= 0)
+        if (stamina <= 1420)
         {
             playerController.rb.gravityScale = 30;
+            stamina = 1420;
         }
-        if (stamina > 0)
+        if (stamina > 1420)
         {
             playerController.rb.gravityScale = 0;
         }
 
-        if(playerController.isDashing)
+        if (playerController.isDashing)
         {
             stamina -= 40;
         }
@@ -62,15 +62,6 @@ public class Stamina : MonoBehaviour
         {
             stamina += 25;
         }
-       
-
-    }
-
-    private void OnValidate()
-    {
-        if (stamina > maxStamina) stamina = maxStamina;
-        else if (stamina < 0) stamina = 0;
     }
 
 }
-
