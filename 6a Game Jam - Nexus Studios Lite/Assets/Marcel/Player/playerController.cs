@@ -112,8 +112,6 @@ public class playerController : MonoBehaviour
         if (IsGroundedUp())
         {
             spriteRenderer.flipY = true;
-            rb.gravityScale = -5;
-
         }
         else if (!IsGroundedUp())
         {
