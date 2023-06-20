@@ -4,17 +4,18 @@ public class MoveUpDown : MonoBehaviour
 {
     public float startY;
     public float amplitude;
-    private float timer = 0f;
+    public float speed;
+
+    private Vector3 startPos;
 
     void Start()
     {
-        startY = transform.position.y;
+        startPos = transform.position;
     }
 
     void Update()
     {
-        timer += Time.deltaTime;
-        float newY = startY + Mathf.Sin(timer) * amplitude;
-        transform.position = new Vector3(transform.position.x, newY, transform.position.z);
+        float newY = startY + Mathf.Sin(Time.time * speed) * amplitude;
+        transform.position = new Vector3(startPos.x, newY, startPos.z);
     }
 }
