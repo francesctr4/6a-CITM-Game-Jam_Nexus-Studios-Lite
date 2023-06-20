@@ -8,6 +8,8 @@ TagManager:
   - Coin
   - Arriba
   - Abajo
+  - Item
+  - Pincho
   layers:
   - Default
   - TransparentFX
@@ -56,6 +58,9 @@ TagManager:
     locked: 0
   - name: Tilemap
     uniqueID: 2984337903
+    locked: 0
+  - name: Pinchos
+    uniqueID: 3225102607
     locked: 0
   - name: Player
     uniqueID: 3266935189
