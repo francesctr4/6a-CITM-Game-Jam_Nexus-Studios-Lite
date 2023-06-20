@@ -30,7 +30,7 @@ public class Stamina : MonoBehaviour
     }
 
     // Update is called once per frame
-    private void Update()
+    private void FixedUpdate()
     {
         if (stamina > maxStamina) stamina = maxStamina;
 
@@ -40,7 +40,7 @@ public class Stamina : MonoBehaviour
 
         if (Input.GetKey("w") || Input.GetKey("a") || Input.GetKey("s") || Input.GetKey("d"))
         {
-            stamina -= 15;
+            stamina -= 10;
         }
 
         if (stamina <= 1420)
@@ -55,7 +55,7 @@ public class Stamina : MonoBehaviour
 
         if (playerController.isDashing)
         {
-            stamina -= 40;
+            stamina -= 15;
         }
 
         if (playerController.IsGroundedDown() || playerController.IsGroundedUp() || playerController.IsGroundedRight())
