@@ -45103,6 +45103,7 @@ GameObject:
   - component: {fileID: 900054934}
   - component: {fileID: 900054933}
   - component: {fileID: 900054932}
+  - component: {fileID: 900054935}
   m_Layer: 5
   m_Name: Vida2
   m_TagString: Untagged
@@ -45180,6 +45181,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 900054930}
   m_CullTransparentMesh: 1
+--- !u!95 &900054935
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 900054930}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 35d08a52e142b8e4282715da96c0d584, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &903474602
 GameObject:
   m_ObjectHideFlags: 0
@@ -47914,6 +47935,7 @@ GameObject:
   - component: {fileID: 997251053}
   - component: {fileID: 997251052}
   - component: {fileID: 997251051}
+  - component: {fileID: 997251054}
   m_Layer: 5
   m_Name: Vida1
   m_TagString: Untagged
@@ -47991,6 +48013,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 997251049}
   m_CullTransparentMesh: 1
+--- !u!95 &997251054
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 997251049}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 35d08a52e142b8e4282715da96c0d584, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &998606993
 GameObject:
   m_ObjectHideFlags: 0
@@ -50565,6 +50607,26 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6730756943393483042, guid: 69ac6cf6723d1014385f89efe7a57f77, type: 3}
+      propertyPath: life
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6730756943393483042, guid: 69ac6cf6723d1014385f89efe7a57f77, type: 3}
+      propertyPath: hearts.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6730756943393483042, guid: 69ac6cf6723d1014385f89efe7a57f77, type: 3}
+      propertyPath: hearts.Array.data[0]
+      value: 
+      objectReference: {fileID: 997251049}
+    - target: {fileID: 6730756943393483042, guid: 69ac6cf6723d1014385f89efe7a57f77, type: 3}
+      propertyPath: hearts.Array.data[1]
+      value: 
+      objectReference: {fileID: 900054930}
+    - target: {fileID: 6730756943393483042, guid: 69ac6cf6723d1014385f89efe7a57f77, type: 3}
+      propertyPath: hearts.Array.data[2]
+      value: 
+      objectReference: {fileID: 1380450349}
     - target: {fileID: 6792578308818995467, guid: 69ac6cf6723d1014385f89efe7a57f77, type: 3}
       propertyPath: unlockedDash
       value: 0
@@ -50656,6 +50718,7 @@ GameObject:
   - component: {fileID: 1380450353}
   - component: {fileID: 1380450352}
   - component: {fileID: 1380450351}
+  - component: {fileID: 1380450354}
   m_Layer: 5
   m_Name: Vida3
   m_TagString: Untagged
@@ -50733,6 +50796,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1380450349}
   m_CullTransparentMesh: 1
+--- !u!95 &1380450354
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1380450349}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 35d08a52e142b8e4282715da96c0d584, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1404525463
 GameObject:
   m_ObjectHideFlags: 0
@@ -51062,7 +51145,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
