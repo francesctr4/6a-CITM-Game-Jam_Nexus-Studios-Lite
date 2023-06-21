@@ -62,6 +62,9 @@ TagManager:
   - name: Pinchos
     uniqueID: 3225102607
     locked: 0
+  - name: Cartel
+    uniqueID: 1466247303
+    locked: 0
   - name: Player
     uniqueID: 3266935189
     locked: 0
