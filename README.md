@@ -1,4 +1,4 @@
-# 6a-CITM-Game-Jam_Nexus-Studios-Lite (In Progress)
+# 6a CITM Game Jam: Nexus Studios Lite
 
 ### Repository Link: [Nexus Studios Lite](https://github.com/francesctr4/6a-CITM-Game-Jam_Nexus-Studios-Lite)
 
